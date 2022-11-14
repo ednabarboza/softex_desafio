@@ -1,0 +1,18 @@
+@import "global.css";
+@import "variables.css";
+@import "form.css";
+
+
+
+.container_principal {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+
+.container_title {
+    margin: 32px 0;
+    font-size: 32px;
+
+}

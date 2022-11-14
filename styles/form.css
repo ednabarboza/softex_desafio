@@ -1,0 +1,29 @@
+
+.container-button{
+    margin-top: 20px;
+    margin-left: 10%;
+    background: var(--orange-500);
+    color: var(--white-100);
+    border: none;
+    padding: 8px;
+    font-size: 15px;
+    font-weight: 500;
+
+}
+
+.container-button:hover{
+    background-color: var(--orange-300);
+}
+
+.container-button:active{
+    background-color: var(--orange-500);
+}
+
+.container-wrapper{
+    margin-bottom: 12px;
+}
+
+.container-input-feminino, .container-input-masculino
+{
+    margin-right: 2px;
+}
