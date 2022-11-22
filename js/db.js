@@ -1,10 +1,10 @@
 /* Esse módulo contém a conexão e as funções de manipulação do banco de dados */
 
 // Info do banco de dados
-const user = 'user'
-const pssw = '111111111'
+const user = 'root'
+const pssw = 'P3ndr@g0n'
 const host = 'localhost'
-const port = '3306'
+const port = '3307'
 const database = 'empresa'
 const table = 'empregado'
 

@@ -1,6 +1,7 @@
 (async () => {
     const express = require('express');
     const db = require('./db');
+    const empregado = require('./empregado');
 
     const app = express();
 
@@ -32,4 +33,17 @@
     const f = await db.select();
     console.log(f);
 
-})()
+    // Teste
+    await empregado.create(
+        {
+            Matricula: 1,
+            Nome: "Diego augusto",
+            Data_Nasc: "2000-01-01",
+            Sexo: "M",
+            Salario: 2000.00,
+            Supervisor: "nao",
+            Depto: "Back-End"
+        }
+    )
+
+})();
