@@ -1,54 +1,59 @@
-/* Esse módulo contém a conexão e as funções de manipulação do banco de dados */
+const Sequelize = require('sequelize');
 
-// Info do banco de dados
-const user = 'root'
-const pssw = '*******'
-const host = 'localhost'
-const port = '3306'
-const database = 'empresa'
-const table = 'empregado'
+async function connect() {
 
-// Conexão com o banco de dados
-async function connect(){
-    // Verifica se já há uma conexão ativa. Se tiver, retorna a mesma
-    if(global.connection && global.connection.state !== 'disconnected')
-        return global.connection;
+    const sequelize = new Sequelize('empresa', 'root', '11111111', {
+        host: 'localhost',
+        dialect: 'mysql'
+    });
 
-    const mysql = require('mysql2/promise');
-    const connection = await mysql.createConnection(`mysql://${user}:${pssw}@${host}:${port}/${database}`);
-    console.log('Sucessfully connected to MySQL!');
-    global.connection = connection;
-    return connection;
-}
+    try {
+        await sequelize.authenticate();
+        console.log('Connection has been established successfully.');
+    } catch (error) {
+        console.error('Unable to connect to the database:', error);
+    };
 
-// Listagem de registros - retorna um array de objetos, onde cada objeto é um registro da tabela
-async function select(){
-    const connection = await connect();
-    const [rows] = await connection.query(`SELECT * FROM ${table};`);
-    return rows;
-}
+    const Empregado = sequelize.define('Empregado',
+    {
+        Matricula:
+        {
+            type: Sequelize.INTEGER,
+            autoIncrement: true,
+            allowNull: false,
+            primaryKey: true
+        },
+        Nome:
+        {
+            type: Sequelize.STRING,
+            allowNull: false
+        },
+        Data_Nasc:
+        {
+            type: Sequelize.DATE
+        },
+        Sexo:
+        {
+            type: Sequelize.CHAR
+        },
+        Salario:
+        {
+            type: Sequelize.FLOAT
+        },
+        Supervisor:
+        {
+            type: Sequelize.STRING
+        },
+        Depto:
+        {
+            type: Sequelize.STRING
+        }
+    }
+    );
 
-// Inserção de registros - o parâmetro é um objeto com os atributos nome, nasc, sexo, salario, supervisor e depto
-async function insert(funcionario){
-    const connection = await connect();
-    const sql = `INSERT INTO ${table}(NOME, DATA_NASC, SEXO, SALARIO, SUPERVISOR, DEPTO) VALUES (?,?,?,?,?,?);`;
-    const values = [funcionario.nome, funcionario.nasc, funcionario.sexo, funcionario.salario, funcionario.supervisor, funcionario.depto];
-    await connection.query(sql, values);
-}
+    await Empregado.sync();
 
-// Atualização de registros existentes
-async function update(matricula, funcionario){
-    const connection = await connect();
-    const sql = `UPDATE ${table} SET NOME=?, DATA_NASC=?, SEXO=?, SALARIO=?, SUPERVISOR=?, DEPTO=? WHERE MATRICULA=?;`;
-    const values = [funcionario.nome, funcionario.nasc, funcionario.sexo, funcionario.salario, funcionario.supervisor, funcionario.depto, matricula];
-    await connection.query(sql, values);
-}
+};
 
-// Apagar registros
-async function erase(matricula){
-    const connection = await connect();
-    const sql = `DELETE FROM ${table} WHERE MATRICULA=?;`;
-    await connection.query(sql, [matricula]);
-}
-
-module.exports = { connect, select, insert, update, erase }
+connect();
+module.exports = connect;
