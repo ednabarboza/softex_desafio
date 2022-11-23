@@ -7,7 +7,7 @@ git checkout development
 
 2. Na breanch de desenvolvimento instala os pacotes:
 ```
-npm install express mysql sequelize
+npm install express mysql2 sequelize
 ```
 
 3. Depois o comando para atualizar o projeto:
