@@ -2,9 +2,9 @@
 
 // Info do banco de dados
 const user = 'root'
-const pssw = 'P3ndr@g0n'
+const pssw = '*******'
 const host = 'localhost'
-const port = '3307'
+const port = '3306'
 const database = 'empresa'
 const table = 'empregado'
 
