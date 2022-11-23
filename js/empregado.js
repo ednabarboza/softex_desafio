@@ -39,4 +39,6 @@ const Empregado = database.define('Empregado',
 }
 );
 
+await Empregado.sync();
+
 module.exports = Empregado;
