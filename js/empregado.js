@@ -1,7 +1,8 @@
 const Sequelize = require('sequelize');
-const db = require('./db');
+const database = require('./db');
 
-const Empregado = db.define('Empregado',
+
+const Empregado = database.define('Empregado',
 {
     Matricula:
     {
