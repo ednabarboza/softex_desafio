@@ -1,7 +1,6 @@
 (async () => {
     const express = require('express');
     const db = require('./db');
-    const empregado = require('./empregado');
 
     const app = express();
     

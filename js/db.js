@@ -13,47 +13,8 @@ async function connect() {
     } catch (error) {
         console.error('Unable to connect to the database:', error);
     };
-
-    const Empregado = sequelize.define('Empregado',
-    {
-        Matricula:
-        {
-            type: Sequelize.INTEGER,
-            autoIncrement: true,
-            allowNull: false,
-            primaryKey: true
-        },
-        Nome:
-        {
-            type: Sequelize.STRING,
-            allowNull: false
-        },
-        Data_Nasc:
-        {
-            type: Sequelize.DATE
-        },
-        Sexo:
-        {
-            type: Sequelize.CHAR
-        },
-        Salario:
-        {
-            type: Sequelize.FLOAT
-        },
-        Supervisor:
-        {
-            type: Sequelize.STRING
-        },
-        Depto:
-        {
-            type: Sequelize.STRING
-        }
-    }
-    );
-
-    await Empregado.sync();
-
 };
 
 connect();
+
 module.exports = connect;
