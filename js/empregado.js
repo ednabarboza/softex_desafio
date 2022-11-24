@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize');
-const database = require('./db');
+const database = require('../js/db');
 
 
 const Empregado = database.define('Empregado',
@@ -38,7 +38,5 @@ const Empregado = database.define('Empregado',
     }
 }
 );
-
-await Empregado.sync();
 
 module.exports = Empregado;
