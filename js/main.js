@@ -32,8 +32,8 @@
 
         // simula um insert no banco
         await empregado.create({
-            matricula, 
-            nome, 
+            matricula: 1, 
+            nome: "Diego Augusto", 
             data_nascimento, 
             sexo_feminino,
             sexo_masculino,
