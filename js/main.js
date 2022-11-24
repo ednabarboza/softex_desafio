@@ -24,19 +24,17 @@
         const matricula = req.body.matricula
         const nome = req.body.nome
         const data_nascimento = req.body.data_nascimento
-        const sexo_feminino = req.body.sexo_feminino
-        const sexo_masculino = req.body.sexo_masculino
+        const sexo = req.body.sexo
         const salario = req.body.salario
         const supervisor = req.body.supervisor
         const departamento = req.body.departamento
 
         // simula um insert no banco
         await empregado.create({
-            matricula: 1, 
-            nome: "Diego Augusto", 
+            matricula, 
+            nome, 
             data_nascimento, 
-            sexo_feminino,
-            sexo_masculino,
+            sexo,
             salario,
             supervisor,
             departamento
