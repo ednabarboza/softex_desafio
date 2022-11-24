@@ -2,7 +2,14 @@
     const express = require('express');
     const db = require('../js/db');
     const empregado = require('../js/empregado');
+    const empregadosRoutes = require('../js/routes/empregados.routes');
     const app = express();
+
+    //Interpretar os dados em JSON
+    app.use(express.json());
+
+    app.use('/api', empregadosRoutes);
+
   
     // configura a view engine
     app.set('view engine', 'ejs');
