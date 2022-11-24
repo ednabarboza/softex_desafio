@@ -18,29 +18,35 @@
         res.render('../views/home');
     });
 
-    app.post('/home', async (req, res) => {
+    app.post('/', (req, res) => {
         // vai pegar os valores do front 
         // e vai mandar pro banco
-        const matricula = req.body.matricula
-        const nome = req.body.nome
-        const data_nascimento = req.body.data_nascimento
-        const sexo = req.body.sexo
-        const salario = req.body.salario
-        const supervisor = req.body.supervisor
-        const departamento = req.body.departamento
+        function enviar() {
+        
+        const matricula = req.params.matricula
+        const nome = req.params.nome
+        const data_nascimento = req.params.data_nascimento
+        const sexo = req.params.sexo
+        const salario = req.params.salario
+        const supervisor = req.params.supervisor
+        const departamento = req.params.departamento
 
         // simula um insert no banco
-        await empregado.create({
-            matricula, 
-            nome, 
-            data_nascimento, 
-            sexo,
-            salario,
-            supervisor,
-            departamento
+        empregado.create({
+        matricula, 
+        nome, 
+        data_nascimento, 
+        sexo,
+        salario,
+        supervisor,
+        departamento
         });
 
         res.redirect('/');
+        
+    }
+
+        enviar();
 
     });
 
